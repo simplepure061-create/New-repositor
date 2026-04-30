@@ -65,6 +65,27 @@ local function Auth()
 end
 
 if isfile and isfile(Key_File) then LoadUI() else Auth() end
+-- [[ NinjaPremium 診斷啟動器 ]] --
+local url = "https://githubusercontent.com"
+
+local success, content = pcall(function() return game:HttpGet(url) end)
+
+if not success then
+    print("❌ 網路抓取失敗：你的執行器可能不支援 HttpGet")
+elseif #content < 50 then
+    print("❌ 內容太短：你的 GitHub 檔案裡可能沒貼好代碼，目前內容：" .. content)
+else
+    local func, err = loadstring(content)
+    if not func then
+        print("❌ 代碼語法錯誤：" .. tostring(err))
+        print("--- 以下是抓取到的內容 (前50字) ---")
+        print(content:sub(1, 50))
+    else
+        print("✅ 診斷完畢，嘗試載入介面...")
+        func()
+    end
+end
+
 loadstring(game:HttpGet("https://githubusercontent.com"))()
 
 
